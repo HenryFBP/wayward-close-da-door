@@ -1,0 +1,22 @@
+{
+    "name": "CloseDaDoor",
+    "description": "'Close Da Door!' is a mod that auto-closes doors.",
+    "version": "1.0.0",
+    "author": "HenryFBP",
+    "compatibleMajorVersions": [
+        2
+    ],
+
+    "compatibleMinorVersions": [
+        3,
+        4,
+        5
+    ],
+
+    "unloadable": true,
+    "file": "CloseDaDoor.js",
+    "hooks": [
+        "OnMove",
+        "OnPlayerJoin"
+    ]
+}
