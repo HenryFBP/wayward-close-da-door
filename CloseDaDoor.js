@@ -207,21 +207,12 @@ define(["require", "exports", "mod/Mod", "Enums"], function (require, exports, M
             let dbv = this.directionToVector(db); //direction backwards vector
             let t = game.getTileFromPoint(pp); //tile
             let d = t.doodad; //doodad
-            //turn 180
-            p.facingDirection = this.oppositeDirection(p.facingDirection);
+            this.toggleDoorState(d); //close the door
+            // renderer.renderWorld(d.x, d.y, d.z)
+            // renderer.render();
+            world.updateTile(d.x, d.y, d.z, t); //show that door gettin closed
+            actionManager.execute(p, Enums_1.ActionType.Idle); //idle because this normally will take 1 turn
             game.updateRender = true;
-            setTimeout(() => {
-                this.toggleDoorState(d); //close the door
-                // renderer.renderWorld(d.x, d.y, d.z)
-                // renderer.render();
-                world.updateTile(d.x, d.y, d.z, t); //show that door gettin closed
-                actionManager.execute(p, Enums_1.ActionType.Idle); //idle because this normally will take 1 turn
-                setTimeout(() => {
-                    p.facingDirection = this.oppositeDirection(p.facingDirection); //turn 180
-                    game.updateRender = true;
-                    p.resetMovementStates();
-                }, this.delay);
-            }, this.delay);
         }
         onPlayerJoin(p) {
             //reset local vars
